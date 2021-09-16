@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue {
+            background-color: blue;
+            width:50px;
+            height: 50px;
+        }
+        .red{
+            background-color: red;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post">
+        <table>
+            <tbody>
+            {% for col in range(8) %}
+                <tr>
+                    {% for row in range(8) %}
+                        {% if (col+row) % 2==0 %}
+                            <td>
+                                {% if content[1] == [col, row] %}
+                                    <button class="blue" name="position" value={{row}}{{col}} style="color:orange;">
+                                {% elif 'black' == content[0].board_state[col][row].color %}
+                                    <button class="blue" name="position" value={{row}}{{col}} style="color:black;">
+                                {% else %}
+                                    <button class="blue" name="position" value={{row}}{{col}} style="color:white;">
+                                {% endif %}
+
+                                {% if 'Pawn' in content[0].board_state[col][row].name  %}
+                                    pa
+                                {% elif 'King' in content[0].board_state[col][row].name  %}
+                                    ki
+                                {% elif 'Queen' in content[0].board_state[col][row].name  %}
+                                    qu
+                                {% elif 'Knight' in content[0].board_state[col][row].name  %}
+                                    kn
+                                {% elif 'Rook' in content[0].board_state[col][row].name  %}
+                                    ro
+                                {% elif 'Bishop' in content[0].board_state[col][row].name  %}
+                                    bi
+                                {% else  %}
+                                    <br>
+                                {% endif %}
+                            </button></td>
+                        {% else %}
+                            <td>
+                                {% if content[1] == [col, row] %}
+                                    <button class="red" name="position" value={{row}}{{col}} style="color:orange;">
+                                {% elif 'black' == content[0].board_state[col][row].color %}
+                                    <button class="red" name="position" value={{row}}{{col}} style="color:black;">
+                                {% else  %}
+                                    <button class="red" name="position" value={{row}}{{col}} style="color:white;">
+                                {% endif %}
+
+                                {% if 'Pawn' in content[0].board_state[col][row].name  %}
+                                    pa
+                                {% elif 'King' in content[0].board_state[col][row].name  %}
+                                    ki
+                                {% elif 'Queen' in content[0].board_state[col][row].name  %}
+                                    qu
+                                {% elif 'Knight' in content[0].board_state[col][row].name  %}
+                                    kn
+                                {% elif 'Rook' in content[0].board_state[col][row].name  %}
+                                    ro
+                                {% elif 'Bishop' in content[0].board_state[col][row].name  %}
+                                    bi
+                                {% else  %}
+                                    <br>
+                                {% endif %}
+                            </button></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    <form action="#" method="post">
+        <button name="new" value="reset">New Game</button>
+    </form>
+    <form action="#" method="post">
+        <select name="change">
+            <option value="queen">queen</option>
+            <option value="knight">knight</option>
+            <option value="rook">rook</option>
+            <option value="bishop">bishop</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
