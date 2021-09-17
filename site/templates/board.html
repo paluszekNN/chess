@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .blue {
-            background-color: blue;
-            width:50px;
-            height: 50px;
+        button{
+            background-size:100% 100%;
+            width: 60px;
+            height: 60px;
         }
-        .red{
-            background-color: red;
-            width: 50px;
-            height: 50px;
-        }
+
     </style>
 </head>
 <body>
     <form action="#" method="post">
-        <table>
+        <table cellpadding="0" cellspacing="0">
             <tbody>
             {% for col in range(8) %}
                 <tr>
@@ -26,55 +22,77 @@
                         {% if (col+row) % 2==0 %}
                             <td>
                                 {% if content[1] == [col, row] %}
-                                    <button class="blue" name="position" value={{row}}{{col}} style="color:orange;">
-                                {% elif 'black' == content[0].board_state[col][row].color %}
-                                    <button class="blue" name="position" value={{row}}{{col}} style="color:black;">
+                                    <button name="position" value={{row}}{{col}} style="border:2px solid orange;
                                 {% else %}
-                                    <button class="blue" name="position" value={{row}}{{col}} style="color:white;">
+                                    <button name="position" value={{row}}{{col}} style="
                                 {% endif %}
 
-                                {% if 'Pawn' in content[0].board_state[col][row].name  %}
-                                    pa
-                                {% elif 'King' in content[0].board_state[col][row].name  %}
-                                    ki
-                                {% elif 'Queen' in content[0].board_state[col][row].name  %}
-                                    qu
-                                {% elif 'Knight' in content[0].board_state[col][row].name  %}
-                                    kn
-                                {% elif 'Rook' in content[0].board_state[col][row].name  %}
-                                    ro
-                                {% elif 'Bishop' in content[0].board_state[col][row].name  %}
-                                    bi
+                                {% if 'Pawn' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_pawn_2.png') }});">
+                                {% elif 'Pawn' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_pawn_2.png') }});">
+                                {% elif 'King' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_king_2.png') }});">
+                                {% elif 'King' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_king_2.png') }});">
+                                {% elif 'Queen' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_queen_2.png') }});">
+                                {% elif 'Queen' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_queen_2.png') }});">
+                                {% elif 'Knight' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_knight_2.png') }});">
+                                {% elif 'Knight' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_knight_2.png') }});">
+                                {% elif 'Rook' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_rook_2.png') }});">
+                                {% elif 'Rook' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_rook_2.png') }});">
+                                {% elif 'Bishop' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_bishop_2.png') }});">
+                                {% elif 'Bishop' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_bishop_2.png') }});">
                                 {% else  %}
-                                    <br>
+                                    background-color: black;">
                                 {% endif %}
-                            </button></td>
+                                    </button>
+                            </td>
                         {% else %}
                             <td>
                                 {% if content[1] == [col, row] %}
-                                    <button class="red" name="position" value={{row}}{{col}} style="color:orange;">
-                                {% elif 'black' == content[0].board_state[col][row].color %}
-                                    <button class="red" name="position" value={{row}}{{col}} style="color:black;">
-                                {% else  %}
-                                    <button class="red" name="position" value={{row}}{{col}} style="color:white;">
+                                    <button name="position" value={{row}}{{col}} style="border:2px solid orange;
+                                {% else %}
+                                    <button name="position" value={{row}}{{col}} style="
                                 {% endif %}
 
-                                {% if 'Pawn' in content[0].board_state[col][row].name  %}
-                                    pa
-                                {% elif 'King' in content[0].board_state[col][row].name  %}
-                                    ki
-                                {% elif 'Queen' in content[0].board_state[col][row].name  %}
-                                    qu
-                                {% elif 'Knight' in content[0].board_state[col][row].name  %}
-                                    kn
-                                {% elif 'Rook' in content[0].board_state[col][row].name  %}
-                                    ro
-                                {% elif 'Bishop' in content[0].board_state[col][row].name  %}
-                                    bi
+                                {% if 'Pawn' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_pawn.png') }});">
+                                {% elif 'Pawn' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_pawn.png') }});">
+                                {% elif 'King' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_king.png') }});">
+                                {% elif 'King' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_king.png') }});">
+                                {% elif 'Queen' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_queen.png') }});">
+                                {% elif 'Queen' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_queen.png') }});">
+                                {% elif 'Knight' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_knight.png') }});">
+                                {% elif 'Knight' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_knight.png') }});">
+                                {% elif 'Rook' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_rook.png') }});">
+                                {% elif 'Rook' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_rook.png') }});">
+                                {% elif 'Bishop' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'black' %}
+                                    background-image: url({{ url_for('static', filename='black_bishop.png') }});">
+                                {% elif 'Bishop' in content[0].board_state[col][row].name and content[0].board_state[col][row].color == 'white' %}
+                                    background-image: url({{ url_for('static', filename='white_bishop.png') }});">
                                 {% else  %}
-                                    <br>
+                                    background-color: white;">
                                 {% endif %}
-                            </button></td>
+                                    </button>
+                            </td>
                         {% endif %}
                     {% endfor %}
                 </tr>
@@ -83,7 +101,7 @@
         </table>
     </form>
     <form action="#" method="post">
-        <button name="new" value="reset">New Game</button>
+        <button style="width: 100px;" name="new" value="reset">New Game</button>
     </form>
     <form action="#" method="post">
         <select name="change">
